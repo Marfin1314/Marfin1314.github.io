@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: pink;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+    </h1>
+    <div class="box">陈金龙</div>
+</body>
+<script>
+    var params = location.search.substr(1, 17);
+    console.log(params);
+    var arr = params.split('=');
+    console.log(arr);
+    console.log(arr[1]);
+    var h1 = document.querySelector('h1');
+    welcom();
+    function welcom(params) {
+        h1.innerHTML = '你好' + arr[1] + '用户'
+    }
+    var cjl = document.querySelector('.box');
+    cjl.addEventListener('onclick')
+
+</script>
+
+</html>

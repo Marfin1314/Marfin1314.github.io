@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            margin: 100px 50%;
+        }
+
+        button {
+            background-color: pink;
+            border: 0.5px solid #fff;
+            border-radius: 4px;
+        }
+
+        .light {
+            width: 50px;
+            height: 200px;
+            /* display: flex;
+            justify-content: center; */
+            margin-top: 20px;
+            border-radius: 50px;
+            border: 0.5px solid #888888;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: rgb(135, 222, 212);">
+    <div class="box">
+        <button class="dj">开灯</button>
+
+        <div style="background-color:#0f0f0f" class="light bgc"></div>
+    </div>
+
+    <script>
+        function $(params) {
+            return document.querySelector(params);
+        }
+        function $$(params) {
+            return document.querySelectorAll(params);
+        }
+        var dj = $('.dj');
+        var bgc = $('.bgc');
+        var flag = 0;
+        dj.onclick = function () {
+            if (flag === 0) {
+                bgc.style.backgroundColor = '#0f0f0f'
+                flag = 1;
+                dj.innerHTML = '开灯';
+            } else {
+                bgc.style.backgroundColor = '#ffc'
+                flag = 0;
+                dj.innerHTML = '关灯';
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

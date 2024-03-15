@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下拉菜单栏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .nav {
+            text-align: center;
+            border: 1px solid #c5c5c5;
+            /* background-color: #e3e4e5; */
+        }
+
+        .nav .box {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            background-color: aqua;
+        }
+
+        .nav .content {
+            position: absolute;
+            top: 53px;
+            left: 10px;
+            display: none;
+            background-color: #c5c5c5;
+        }
+
+        .content li {
+            border: 1px solid yellow;
+            padding: 0 10px;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        /* 鼠标经过元素是设置 A:hover B {
+            //鼠标经过A元素时，B元素背景会变成黑色
+            background: #000;
+        }
+
+        A:hover+B {
+            //鼠标经过A元素时，B元素背景会变成黑色
+            background: #000;
+        }
+
+        $("A").hover(function() {
+                $("B").css("background-color", "#f2f2f2");
+
+            }) $("A").mouseout(function() {
+                $("B").css("background-color", "#fff");
+        })
+ */
+        /* a:hover+.content {
+            display: inline;
+        } */
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li class="box">
+            <a href="#">微博 v</a>
+            <ul class="content">
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我 </li>
+            </ul>
+        </li>
+        <li class="box">
+            <a href="#">博客 v</a>
+            <ul class="content">
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我 </li>
+            </ul>
+        </li>
+        <li class="box">
+            <a href="#">邮箱 v</a>
+            <ul class="content">
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我 </li>
+            </ul>
+        </li>
+        <li class="box">
+            <a href="#">网站 v</a>
+            <ul class="content">
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我 </li>
+            </ul>
+        </li>
+        <li class="box">
+            <a href="#">登录 v</a>
+            <ul class="content">
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我 </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+<script>
+    //1.获取元素
+    var nav = document.querySelector('.nav');
+    var lis = nav.children;
+    console.log(lis);
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseover = function () {
+            this.children[1].style.display = 'block';
+        }
+        lis[i].onmouseout = function () {
+            this.children[1].style.display = 'none';
+        }
+    }
+</script>
+
+</html>

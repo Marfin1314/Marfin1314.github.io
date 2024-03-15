@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+<script>
+    var uls = document.querySelector('ul');
+    //下面括号里没有给值时他只复制标签不复制其他节点，所以要想把里面的值也复制过来那么在括号里面是写true。
+    var lili = uls.children[1].cloneNode(true);
+    uls.appendChild(lili);
+    console.log(lili);
+    lili.innerHTML = '5';
+</script>
+
+</html>

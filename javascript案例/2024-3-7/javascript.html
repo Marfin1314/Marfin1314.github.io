@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .maxbox {
+            float: left;
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            background: url(imges/mess.png) no-repeat left center;
+            padding-left: 20px;
+        }
+
+        .logo {
+            float: left;
+            display: block;
+            width: 24px;
+            background-color: #0f0f0f;
+        }
+        .wrong {
+            float: left;
+            color: red;
+            background-image: url(jksdahf.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="maxbox">
+        <input type="password" class="passwords">
+        <i class="logo">
+            <img src="akldjfhng.pnp" alt="">
+        </i>
+        请输入6-16位密码
+    </div>
+    <script>
+        function $(params) {
+            return document.querySelector(params);
+        }
+        function $$(params) {
+            return document.querySelectorAll(params);
+        }
+        var ipt = $('.passwords');
+        var maxbox = $('.maxbox');
+        console.log(maxbox);
+        ipt.onblur = function () {
+            if (ipt.value.length < 6 || ipt.value.length > 16) {
+                maxbox.className = 'maxbox wrong';
+            }
+        }
+    </script>
+</body>
+
+</html>

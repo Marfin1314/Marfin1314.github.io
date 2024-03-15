@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>发表评论</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .top {
+        border-bottom: 1px solid red;
+        padding: 100px;
+    }
+
+    textarea {
+        padding: 10px;
+    }
+
+    .top button {
+        padding: 2px;
+        border-radius: 3px;
+        /* background-color: pink; */
+    }
+
+    .bottom {
+        width: 300px;
+        border: 1px solid blue;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .bottom a {
+        text-decoration: none;
+        color: red;
+        border: 1px solid #999;
+        float: right;
+        border-radius: 14px;
+        padding: 3px;
+        font-weight: 800;
+        font-size: 10px;
+    }
+
+    .bottom li {
+        padding: 5px;
+    }
+
+    video {
+        margin: 10px auto;
+        background-color: pink;
+        width: 1000px;
+    }
+</style>
+
+<body>
+    <video src="2.mp4" autoplay="autoplay" controls="controls"></video>
+    <div class="top">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button>发表</button>
+    </div>
+    <div class="bottom">
+    </div>
+</body>
+<script>
+    var btn = document.querySelector('button');
+    var text = document.querySelector('textarea');
+    var bottom = document.querySelector('.bottom');
+    var content = 'yy';
+    btn.onclick = function () {
+        if (text.value == '') {
+            alert('请输入内容后再进行发布！');
+        } else if (content === text.value) {
+            alert('你已经评论过相似的内容！')
+        } else {
+            content = text.value;
+            var li = document.createElement('li');
+            bottom.appendChild(li);
+            bottom.insertBefore(li, bottom.children[0]);
+            li.innerHTML = text.value + "<a href='javascript:;'>删除</a>";
+            text.value = ''
+            var a = document.querySelectorAll('a');
+            for (var i = 0; i < a.length; i++) {
+                a[i].onclick = function () {
+                    bottom.removeChild(this.parentNode);
+                }
+            }
+        }
+
+    }
+</script>
+
+</html>

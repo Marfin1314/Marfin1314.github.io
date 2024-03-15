@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM事件流</title>
+    <style>
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">爸爸
+        <div class="son">儿子</div>
+    </div>
+</body>
+<script>
+    //DOM事假流
+    //DOM事假流分为两部分，第一部分是捕获阶段，第二部分是泡阶段。和递归类似有递的过程，也有回的过程。
+    //捕获阶段
+    var father = document.querySelector('.father');
+    var son = document.querySelector('.son');
+    son.addEventListener('click', function (e) {
+        alert('我是儿子');
+        e.stopPropagation();
+    }, false
+    );
+    father.addEventListener('click', function () {
+        alert('我是爸爸');
+    }, false
+    );
+    //冒泡阶段
+    //方便面零食,
+</script>
+
+</html>

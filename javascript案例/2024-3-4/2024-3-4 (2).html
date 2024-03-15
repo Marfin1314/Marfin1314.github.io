@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url(1.jpg) no-repeat;
+            background-size: cover;
+        }
+
+        .bgi {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 200px;
+        }
+
+        li {
+            width: 193px;
+            height: 109px;
+            margin: 10px;
+            list-style: none;
+            text-align: center;
+            line-height: 109px;
+            font-size: 100px;
+            color: #fff;
+            border-radius: 5px;
+            border: 2px solid #0f0f0f;
+            cursor: grab;
+        }
+
+        li:hover {
+            animation: move .3s linear forwards;
+        }
+
+        @keyframes move {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        li img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="bgi">
+        <li><img src="1.jpg" alt=""></li>
+        <li><img src="2.jpg" alt=""></li>
+        <li><img src="3.jpg" alt=""></li>
+        <li><img src="4.jpg" alt=""></li>
+    </ul>
+    <script>
+        var bgis = document.querySelector('.bgi').querySelectorAll('img');
+        for (var i = 0; i <= bgis.length; i++) {
+            bgis[i].onclick = function () {
+                console.log(this.src);
+                document.body.style.backgroundImage = 'url(' + this.src + ')';
+            }
+        }
+    </script>
+</body>
+
+</html>

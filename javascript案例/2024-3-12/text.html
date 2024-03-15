@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+        }
+
+        .box {
+            position: relative;
+            width: 320px;
+            height: 300px;
+            margin: 100px auto;
+            color: #fff;
+            padding: 40px 77px;
+        }
+
+        a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        input {
+            color: #aaa;
+            height: 20px;
+            line-height: 20px;
+            outline: none;
+        }
+
+        h4 {
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .sub {
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            font-weight: 800;
+            margin: 5px 0;
+            color: #000;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h4>用 户</h4>
+        <form action="index.html" onsubmit="return check()">
+            用户名
+            <input type="text" value="" name="unames" class="unames">
+            密码
+            <input type="password" value="" name="password" class="password">
+
+            <a href="file:///D:/github%E6%96%87%E4%BB%B6%E5%A4%B9/Marfin1314.github.io/javascript%E6%A1%88%E4%BE%8B/2024-3-12/zhaohuimima.html"
+                class="left">找回密码</a>
+            <a href="file:///D:/github%E6%96%87%E4%BB%B6%E5%A4%B9/Marfin1314.github.io/javascript%E6%A1%88%E4%BE%8B/2024-3-12/zhuce.html"
+                class="right">注册</a>
+
+            <input type="submit" class="sub" value="登 录">
+        </form>
+    </div>
+</body>
+<script>
+    var uname = location.search.substr(1);
+    console.log(uname);
+    var arr1 = uname.split('&');
+    var arr2 = arr1[0].split('=');
+    var arr3 = arr1[1].split('=');
+    console.log(arr2[1]);
+    console.log(arr3[1]);
+    var names = document.querySelector('.unames')
+    var passwords = document.querySelector('.password');
+    console.log(passwords);
+    var aa = '1'
+    var bb = '1'
+    names.addEventListener('mouseleave', function () {
+        aa = names.value;
+        console.log('aa' + aa);
+    })
+    passwords.addEventListener('mouseleave', function () {
+        bb = passwords.value;
+        console.log('bb' + bb);
+    })
+    function check() {
+        if (arr2[1] == aa && arr3[1] == bb) {
+            return true;    //return true; 时,表单将提交
+        }
+        else {
+            alert('账号或密码错误！')
+            return false;   //return false; 时,表单不提交
+        }
+    }
+</script>
+
+</html>

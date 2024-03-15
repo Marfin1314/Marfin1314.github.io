@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿京东广告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .adv {
+            position: relative;
+            width: 1190px;
+            height: 90px;
+            background: url(1.png) no-repeat center left;
+            background-color: pink;
+            margin: 0 auto;
+        }
+
+        .cancels {
+            position: absolute;
+            top: 0px;
+            right: -26px;
+            width: 24px;
+            height: 24px;
+            border: 0.5px solid #999;
+            text-align: center;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .adv:hover {
+            background: url(2.png) no-repeat center left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="adv">
+        <div class="cancels">X</div>
+    </div>
+    <script>
+        var adv = document.querySelector('.adv');
+        var cancels = document.querySelector('.cancels');
+        flag = 0;
+        cancels.onclick = function () {
+            if (flag === 0) {
+                adv.className = display = 'inline';
+                flag = 1;
+            }
+
+        }
+    </script>
+</body>
+
+</html>                                                     

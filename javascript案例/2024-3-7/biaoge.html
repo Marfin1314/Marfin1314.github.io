@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 800px;
+            margin: 100px auto;
+            text-align: center;
+            border-collapse: collapse;
+            table-layout: auto;
+            font-size: 15px;
+            font-weight: 900;
+            font-family: serif;
+        }
+
+        thead tr {
+            background-color: #999;
+        }
+
+        thead td {
+            height: 2.5em;
+            border: 1px solid #000;
+        }
+
+        tbody td {
+            border: 1px solid #000;
+        }
+
+        button {
+            width: 100%;
+            height: 100%;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            border: none;
+            font-size: 15px;
+            font-weight: 900;
+            outline: none;
+            font-family: serif;
+        }
+
+        a {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="box">
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>科目</td>
+                <td>成绩</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>小明</td>
+                <td>javascript</td>
+                <td>100</td>
+                <td><a href='javascript:;'>删除</a></td>
+            </tr>
+            <tr>
+                <td>小花</td>
+                <td>javascript</td>
+                <td>90</td>
+                <td><a href='javascript:;'>删除</a></td>
+            </tr>
+            <tr>
+                <td>小兰</td>
+                <td>javascript</td>
+                <td>80</td>
+                <td><a href='javascript:;'>删除</a></td>
+            </tr>
+            <tr>
+                <td>小灰灰</td>
+                <td>javascript</td>
+                <td>20</td>
+                <td><a href='javascript:;'>删除</a></td>
+            </tr>
+            <tr>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td>
+                    <button>添加</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    var but = document.querySelector('button');
+    var tr = document.createElement('tr');
+    var theads = document.querySelector('thead');
+    var tbodys = document.querySelector('tbody');
+    var trs = tbodys.querySelectorAll('tr');
+    var tds = trs[trs.length - 1].children[3].querySelector('button');
+    // console.log(trs[trs.length - 1]);
+    var num = trs.length - 1;
+    console.log(trs);
+    var flag = 0;
+    // for (var i = 4; i <= trs.length; i++)
+    tds.onclick = function () {
+        // console.log(trs.length);
+        if (1) {
+            var trm = tbodys.children[num].cloneNode(true);
+            tbodys.appendChild(trm);
+            console.log(tds);
+            // console.log(trs);
+            num++;
+            trs[4].children[3].removeChild(tds);
+            var a = trs[4].children[3].innerHTML = "<a href='javascript:;'>删除</a>";
+        }
+    }
+
+</script>
+
+</html>
