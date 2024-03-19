@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+            background-color: pink;
+            border-radius: 50%;
+        }
+
+        span {
+            position: absolute;
+            top: 200px;
+            width: 100px;
+            height: 100px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+            background-color: pink;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>haha</h3>
+    <span>haha</span>
+    <button class="btn1">点击我到1</button>
+    <button class="btn2">点击我到2</button>
+</body>
+<script>
+    // // 1.立即执行函数: 不需要调用，立马能够自己执行的函数
+    // function fn() {
+    //     console.log(1);
+    // }
+    // fn();
+    // // 2.写法 也可以传递参数进来或者 2.(function ()J());
+    // // 1.(function() {J)()
+    // (function (a, b) {
+    //     console.log(a + b);
+    // })(1, 2); // 第二个小括号可以看做是调用函数
+    // (function sum(a, b) {
+    //     console.log(a + b);
+    // }(2, 3));
+    // var doc = document.querySelector('body');
+    // console.log(doc);
+    // var dpr = window.devicePixelRatio || 1;
+    // function setBodyFontsize() {
+    //     //如果页面中有body 这个元素 就设置body的字体大小
+    //     if (document.body) {
+    //         document.body.style.fontsize = (12 * dpr) + 'px'
+    //     } else {
+    //         // 如果页面中没有body 这个元素，则等着 我们页面主要的DOM元素加载完毕再去设置body
+    //         // 的字体大小
+    //         document.addEventListener('DOMContentLoaded', setBodyFontsize);
+    //         setBodyFontsize();
+    //     }
+    // }
+    // setBodyFontsize();
+    var dh = document.querySelector('h3');
+    var by = document.querySelector('body');
+    var span = document.querySelector('span');
+    An(dh, 30, 400,)
+    //因为获取过来的是一个对象，如果我们给传过来的参数直接使用他们的名字都一样，引起歧义。所以我们使用给对象添加属性的方法我们可以避免引起歧义。比如传过来的参数为div元素时，那么他就是div.timer,这样=就不会引起歧义了。
+    function An(obj, time, target) {
+        //如果不清除前面运行的定时器，那么当我们点击按钮时会开启多个定时器，所以运行之前我们先把运行的定时器关闭掉。
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if (obj.offsetLeft == target) {
+                clearInterval(obj.timer);
+            }
+            obj.style.left = obj.offsetLeft + step + 'px';
+        }, time)
+    }
+    var btn1 = document.querySelector('.btn1')
+    var btn2 = document.querySelector('.btn2')
+    btn1.addEventListener('click', function () {
+        An(span, 20, 500);
+    })
+    btn2.addEventListener('click', function () {
+        An(span, 20, 1000);
+    })
+</script>
+
+</html>
