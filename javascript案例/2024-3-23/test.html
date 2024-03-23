@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?yqtwla');
+            src: url('fonts/icomoon.eot?yqtwla#iefix') format('embedded-opentype'),
+                url('fonts/icomoon.ttf?yqtwla') format('truetype'),
+                url('fonts/icomoon.woff?yqtwla') format('woff'),
+                url('fonts/icomoon.svg?yqtwla#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 721px;
+            height: 406px;
+            background-color: pink;
+            transform: translate(-50%, -50%);
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .imgs {
+            width: 600%;
+        }
+
+        .imgs li {
+            float: left;
+            background-color: #fff;
+        }
+
+        .imgs li img {
+            width: 721px;
+        }
+
+        .left,
+        .right {
+            user-select: none;
+            cursor: grab;
+            color: #fff;
+            font-family: 'icomoon';
+            font-style: normal;
+        }
+
+        .left {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+        }
+
+        .right {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+        }
+
+        .point {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        .point li {
+            float: left;
+            width: 10px;
+            height: 10px;
+            margin: 2px;
+            background-color: transparent;
+            border: 1px solid #fff;
+            border-radius: 50%;
+        }
+
+        .point li:hover {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <ul class="imgs">
+            <li><img src="imgs/1.jpg" alt=""></a></li>
+            <li><img src="imgs/1.jpg" alt=""></a></li>
+            <li><img src="imgs/1.jpg" alt=""></a></li>
+            <li><img src="imgs/1.jpg" alt=""></a></li>
+        </ul>
+        <i class="left"></i>
+        <i class="right"></i>
+        <ol class="point"></ol>
+    </div>
+</body>
+<script>
+    //获取函数工具的制作
+    function $(params) {
+        return document.querySelector(params);
+    }
+    function $$(params1) {
+        return document.querySelectorAll(params1);
+    }
+    //1.获取元素
+    // var imgs = $('.imgs');
+    var point = $('.point');
+    var imgs = $('.imgs');
+    //动态生成小圆圈。
+    for (var i = 0; i < imgs.children.length; i++) {
+        var li = document.createElement('li');
+        point.appendChild(li)
+    }
+    point.children[0].className='current'
+</script>
+
+</html>

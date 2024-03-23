@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .page {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 420px;
+            height: 500px;
+            background-color: #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            transform: translate(-50%, -50%);
+            box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, .7);
+        }
+
+        .screen {
+            width: 400px;
+            height: 100px;
+            background-color: #000;
+            border-radius: 4px;
+            border: 1px solid #000;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 40px;
+            text-align: right;
+            line-height: 120px;
+            padding-right: 10px;
+        }
+
+        tr {
+            width: 420px;
+            height: 70px;
+            background-color: #39f;
+        }
+
+        td {
+            font-size: 20px;
+            font-weight: 800;
+            text-align: center;
+            width: 100px;
+            border-radius: 20px;
+            border: 5px solid #ccc;
+            cursor: grab;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <input class="screen" value="00">
+        <table>
+            <tbody class="tb">
+                <tr>
+                    <td>%</td>
+                    <td>CE</td>
+                    <td>删除</td>
+                    <td>÷</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>×</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>+</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>0</td>
+                    <td>.</td>
+                    <td>=</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
