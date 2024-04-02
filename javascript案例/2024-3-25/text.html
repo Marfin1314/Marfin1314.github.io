@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端开发</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" style="background-color: pink;">1</div>
+    <script>
+        //1.触屏事件
+        // touchstart触摸事件
+        // touchmove触摸移动
+        // touchend触摸离开
+        // 2，触摸事件对象touchenent(touches|触摸手指个数|屏幕，targetTouch|触摸当前元素的个数|元素，changedTouch|手指状态发生变化的过程|这个离开时还存在。)
+        var box = document.querySelector('.box');
+        console.log(box);
+        var index = 0;
+        var tranlatex = -index * w;
+        var timer = setInterval(function () {
+            index++;
+            box.style.transition = 'all .3s';
+            box.style.transform = 'tranlateX(' + translatex + 'px)';
+        }, 3000)
+    </script>
+</body>
+
+</html>

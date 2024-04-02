@@ -40,6 +40,10 @@
         }
 
         .imgs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            user-select: none;
             width: 600%;
         }
 
@@ -59,6 +63,7 @@
             color: #fff;
             font-family: 'icomoon';
             font-style: normal;
+            background: rgba(0, 0, 0, .3);
         }
 
         .left {
@@ -84,14 +89,15 @@
             float: left;
             width: 10px;
             height: 10px;
-            margin: 2px;
-            background-color: transparent;
-            border: 1px solid #fff;
+            margin: 5px;
             border-radius: 50%;
+            background: rgba(0, 0, 0, .1);
+            border: 1px solid rgba(0, 0, 0, .1);
         }
 
-        .point li:hover {
-            background-color: red;
+        .point .current {
+            background-color: #fff;
+            border: 3px solid rgba(0, 0, 0, .05);
         }
     </style>
 </head>
@@ -99,10 +105,11 @@
 <body>
     <div class="nav">
         <ul class="imgs">
-            <li><img src="imgs/1.jpg" alt=""></a></li>
-            <li><img src="imgs/1.jpg" alt=""></a></li>
-            <li><img src="imgs/1.jpg" alt=""></a></li>
-            <li><img src="imgs/1.jpg" alt=""></a></li>
+            <li><img src="imgs/1.jpg" alt="" class="focus"></a></li>
+            <li><img src="imgs/2.jpg" alt="" class="focus"></a></li>
+            <li><img src="imgs/3.jpg" alt="" class="focus"></a></li>
+            <li><img src="imgs/4.jpg" alt="" class="focus"></a></li>
+
         </ul>
         <i class="left"></i>
         <i class="right"></i>
@@ -121,12 +128,98 @@
     // var imgs = $('.imgs');
     var point = $('.point');
     var imgs = $('.imgs');
+    var lefts = $('.left');
+    var rights = $('.right');
+    var focus = $('.focus');
+    // 动画函数
+    function An(obj, time, target) {
+        //如果不清除前面运行的定时器，那么当我们点击按钮时会开启多个定时器，所以运行之前我们先把运行的定时器关闭掉。
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if (obj.offsetLeft == target) {
+                clearInterval(obj.timer);
+            }
+            obj.style.left = obj.offsetLeft + step + 'px';
+        }, time)
+    }
+    var focu = focus.offsetWidth;
     //动态生成小圆圈。
     for (var i = 0; i < imgs.children.length; i++) {
         var li = document.createElement('li');
-        point.appendChild(li)
+        //设置自定义属性
+        li.setAttribute('index', i);
+        point.appendChild(li);
+        //鼠标经过那个小圆圈就切换到那个图片。
+        li.addEventListener('mousemove', function () {
+            //干掉所有人，留下我自己
+            //小圆圈排他思想
+            for (var i = 0; i < point.children.length; i++) {
+                point.children[i].className = '';
+            }
+            this.className = 'current';
+            var index = this.getAttribute('index');
+            num = index;
+            circle = index;
+            //点击小圆圈图片移动
+            An(imgs, 10, -index * focu);
+
+        })
     }
-    point.children[0].className='current'
+    point.children[0].className = 'current';
+    //控制小圆圈的播放
+    var num = 0;
+    var circle = 0;
+    //克隆第一个图片到最后，让他们无缝循环
+    var first = imgs.children[0].cloneNode(true);
+    imgs.appendChild(first);
+    // 节流阀
+    var flag = true;
+    rights.addEventListener('click', function () {
+        if (flag) {
+            flag = flase;
+            if (num == imgs.children.length - 1) {
+                num = 0;
+                imgs.style.left = 0;
+            }
+            num++;
+            circle++;
+            if (circle == imgs.children.length - 1) {
+                circle = 0;
+            }
+            An(imgs, 30, -focu * num);
+            for (var i = 0; i < point.children.length; i++) {
+                point.children[i].className = '';
+            }
+
+            point.children[circle].className = 'current';
+        }
+    })
+
+    lefts.addEventListener('click', function () {
+        if (num == 0) {
+            num = imgs.children.length - 1;
+            imgs.style.left = -num * focu + 'px';
+        }
+        num--;
+        circle--;
+        if (circle < 0) {
+            circle = point.children.length - 1;
+        }
+        An(imgs, 30, -focu * num);
+        for (var i = 0; i < point.children.length; i++) {
+            point.children[i].className = '';
+        }
+
+        point.children[circle].className = 'current';
+    });
+    var ti = setInterval(function () {
+        //手动调用点击事件
+        rights.click();
+    }, 3000);
+
+
 </script>
 
 </html>

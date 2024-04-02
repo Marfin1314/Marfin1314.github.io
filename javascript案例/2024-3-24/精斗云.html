@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ch-zh">
+<script>
+    // 0.引用动画函数
+    //因为获取过来的是一个对象，如果我们给传过来的参数直接使用他们的名字都一样，引起歧义。所以我们使用给对象添加属性的方法我们可以避免引起歧义。比如传过来的参数为div元素时，那么他就是div.timer,这样=就不会引起歧义了。
+    function An(obj, time, target) {
+        //如果不清除前面运行的定时器，那么当我们点击按钮时会开启多个定时器，所以运行之前我们先把运行的定时器关闭掉。
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if (obj.offsetLeft == target) {
+                clearInterval(obj.timer);
+            }
+            obj.style.left = obj.offsetLeft + step + 'px';
+        }, time)
+    }
+    window.addEventListener('load', function () {
+        //1获取元素
+        var ul = document.querySelector('ul');
+        var li = document.querySelectorAll('li');
+        var span = document.querySelector('span');
+        console.log(ul);
+        console.log(ul);
+        console.log(span);
+        var flag = 10;
+        //给第一个小li设置红色文字
+        li[0].style.color = 'red';
+        //2给所有的小li添加鼠标经过事件
+        for (var i = 0; i < li.length; i++) {
+            li[i].addEventListener('mouseenter', function () {
+                An(span, 20, this.offsetLeft);
+                this.style.color = '#fff';
+            })
+            li[i].addEventListener('mouseleave', function () {
+                An(span, 10, flag);
+                this.style.color = '#000';
+            })
+            li[i].addEventListener('click', function () {
+                flag = this.offsetLeft;
+                for (var j = 0; j < li.length; j++) {
+                    li[j].style.color = '#000'
+                };
+                this.style.color = 'red';
+            })
+        }
+    })
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>筋斗云</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+        }
+
+        li {
+            list-style: none;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .shortcut {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 900px;
+            height: 26px;
+            padding: 5px 10px;
+            background-color: #fff;
+            transform: translate(-50%, -50%);
+        }
+
+        ul li {
+            float: left;
+            width: 100px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: normal;
+            font-weight: 900;
+        }
+
+        ul em {
+            float: right;
+        }
+
+        .cloud {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            width: 100px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: green;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shortcut">
+        <span class="cloud"> </span>
+        <ul>
+            <li>首页新闻</li>
+            <li>师资力量</li>
+            <li>活动策划</li>
+            <li>企业文化</li>
+            <li>招聘信息</li>
+            <li>公司简介</li>
+            <li>上海校区</li>
+            <li>广州校区</li>
+            <em>WiFi</em>
+        </ul>
+    </div>
+</body>
+
+</html>
