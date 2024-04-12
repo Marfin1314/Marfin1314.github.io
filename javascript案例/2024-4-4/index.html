@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes move {
+            0% {}
+
+            100% {
+                transform: translateY(1000px);
+            }
+        }
+
+        ul {
+            float: left;
+            width: 200px;
+            height: 40px;
+            margin: 0 10px;
+            position: relative;
+            transform: perspective(500px);
+            transform-style: preserve-3d;
+            transition: all 0.3s;
+        }
+
+        ul:hover {
+            transform: rotateX(90deg);
+        }
+
+        li {
+            position: absolute;
+            list-style: none;
+            width: 200px;
+            height: 40px;
+            background-color: blue;
+            line-height: 40px;
+            color: #fff;
+            text-align: center;
+            transform: translateZ(20px);
+        }
+
+        span {
+            position: absolute;
+            display: inline-block;
+            width: 200px;
+            height: 40px;
+            background-color: red;
+            line-height: 40px;
+            color: #fff;
+            text-align: center;
+            transform: translateY(20px) rotate3d(1, 0, 0, -90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>你爱我吗？</li>
+            <span>我爱你</span>
+        </ul>
+        <ul>
+            <li>你喜欢吃什么？</li>
+            <span>麻辣烫</span>
+        </ul>
+        <ul>
+            <li>我们去旅游吧？</li>
+            <span>呃呃····</span>
+        </ul>
+        <ul>
+            <li>你要我怎样？</li>
+            <span>你在说什么。</span>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,maxmum-scale=1.0,minmum-scale=1.0,use-scalable=no">
+    <title>旋转木马</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            perspective: 400px;
+
+        }
+
+        ul {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 200px auto;
+            background-color: pink;
+            transform-style: preserve-3d;
+        }
+
+        ul li {
+            position: absolute;
+            list-style: none;
+            width: 100px;
+            height: 100px;
+        }
+
+        ul:hover {
+            transform: rotateY(360deg);
+            transition: all 6s;
+        }
+
+        ul .img1 {
+            transform: translateZ(150px);
+            background-color: red;
+        }
+
+        ul .img2 {
+            transform: translate3d(-100px, 0, 100px) rotateY(-60deg);
+            background-color: yellow;
+        }
+
+        ul .img3 {
+            background-color: pink;
+            transform: translate3d(-100px, 0, -100px) rotateY(60deg);
+        }
+
+        ul .img4 {
+            background-color: #000;
+            transform: translateZ(-150px);
+        }
+
+        ul .img5 {
+            background-color: green;
+            transform: translate3d(100px, 0, -100px) rotateY(-60deg);
+        }
+
+        ul .img6 {
+            background-color: red;
+            transform: translate3d(100px, 0, 100px) rotateY(60deg);
+        }
+    </style>
+</head>
+
+<body>
+    <ul>加纳
+        <li class="img1">1</li>
+        <li class="img2">2</li>
+        <li class="img3">3</li>
+        <li class="img4">4</li>
+        <li class="img5">5</li>
+        <li class="img6">6</li>
+    </ul>
+</body>
+
+</html>
